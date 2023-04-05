@@ -4,9 +4,12 @@ from .models import Topic, Entry
 
 from .forms import TopicForm,EntryForm
 
+from django.contrib.auth.decorators import login_required
+
 
 def index(request):
     return render(request,'learning_logs/index.html')
+
 
 def topics(request):
     topics = Topic.objects.order_by('date_added')
@@ -67,3 +70,4 @@ def edit_entry(request,entry_id):
 
     context = {'entry': entry, 'topic': topic,'form': form}
     return render(request, 'learning_logs/edit_entry.html', context)
+
