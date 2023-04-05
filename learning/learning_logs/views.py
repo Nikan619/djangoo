@@ -54,10 +54,10 @@ def new_topic(request):
         # POST data submitted; process data.
         form = TopicForm(data=request.POST)
         if form.is_valid():
-            new_topic = form.save(commit=False) # Save topic in a variable.
-            new_topic.owner = request.user # Set topics owner attribute to current user.
-            new_topic.save() # Save the changes to the database.
-            return HttpResponseRedirect(reverse('learning_logs:topics'))
+            new_topic = form.save(commit=False)
+            new_topic.owner = request.user
+            new_topic.save()
+            return redirect('learning_logs:topics')
 # Create your views here.
 
 @login_required
